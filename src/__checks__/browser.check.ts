@@ -6,7 +6,7 @@ import { emailChannel } from '../alert-channels'
 const alertChannels = [emailChannel]
 
 // This reads a directory and extracts all file paths containing '.spec.ts'
-const files = fs.readdirSync('__checks__/');
+const files = fs.readdirSync('src/__checks__/');
 const specFiles = files.filter((filename) => {
     return filename.includes('.spec.ts');
 });
