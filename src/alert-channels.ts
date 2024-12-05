@@ -8,8 +8,8 @@ const sendDefaults = {
   // sslExpiryThreshold: 30
 }
 
-// Change the email address here to your desired email address
 export const emailChannel = new EmailAlertChannel('email-channel-1', {
+  // Change the email address here to your desired email address
   address: 'alerts@acme.com',
   ...sendDefaults
 })
