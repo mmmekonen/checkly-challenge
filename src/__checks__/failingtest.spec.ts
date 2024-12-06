@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test'
 
+// This test is designed to fail every time
 test('CTA button has "Start for free" text', async ({ page }) => {
     await page.goto('https://checklyhq.com/')
 
