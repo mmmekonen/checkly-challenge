@@ -1,6 +1,6 @@
 # Deploy Playwright Tests to Checkly with a CI Pipeline
 
-This example project repository shows how you can use the Checkly CLI in a monitoring as code (MaC) workflow with Playwright tests.
+This example project repository shows how you can use the Checkly CLI with Playwright tests in a CI pipeline.
 
 1. Write your Playwright tests and add them to a folder.
 2. Add an email to the Alert Channel to be notified of failures.
@@ -8,31 +8,31 @@ This example project repository shows how you can use the Checkly CLI in a monit
 
 ## Project Structure
 
-This project has examples of Playwright tests and one failing Playwright test. It also adds a GitHub Actions workflow and an Email Alert Channel.
+This project has examples of passing Playwright tests and one failing Playwright test. It also adds a GitHub Actions workflow and an Email Alert Channel.
 
-- Playwright tests are located under the `src/__checks__/` directory. The `failingtest.spec.ts` is designed to fail on each run.
+- Playwright tests are located under the `src/__checks__/` directory. The `failingtest.spec.ts` test is designed to fail on each run.
 
 - The `browser.check.ts` file creates Checkly Browser Checks for each `.spec.ts` file in the `src/__checks__/` directory.
 
-- Each check has an Email Alert associated with it, defined in `alert-channels.ts`. Here you can change the specified email to your own to get Checkly email notifications for failing tests.
+- Each check has an Email Alert associated with it, defined in `alert-channels.ts`. Here you can change the email address to get Checkly email notifications for failing tests.
 
-- An example GitHub Actions workflow is in the `.github/workflows/workflow.yml` file. It is triggered on a push to the repository and deploys all the checks in `src/__checks__/`.
+- An example GitHub Actions workflow is in the `.github/workflows/workflow.yml` file. It is triggered on a push to the repository and deploys all the checks in `src/__checks__/` to your Checkly account.
 
-## Recreate This Project
+## How to Recreate This Project
 
 To recreate this project in another repository, you can fork this repository or follow these steps:
 
-1. Install Checkly CLI either with `npm create checkly` or [here](https://www.checklyhq.com/docs/cli/installation/#direct-download).
+1. Install Checkly CLI either with `npm create checkly` or directly [here](https://www.checklyhq.com/docs/cli/installation/#direct-download).
     - Select a location for the Checkly project.
-    - Select template for project (any is fine but Typescript is preferred).
+    - Select template for project (any template is fine but Typescript is preferred).
     - Install all NPM dependencies.
     - Initialize a git repo.
 2. Setup email alerts in the `alert-channels.ts` file.
     - Only necessary alert channel is email and only alert needed is `sendFailure`.
-    - Change the default email address to your desired email.
+    - Change the default email address to the email address you want alerts sent to.
 3. Create a `browser.check.ts` file in `src/__checks__/` similar to the one in this repo.
     - It should take all `.spec.ts` files in the `src/__checks__/` folder and create a Browser Check for each.
-    - Each Browser Check should include an Email Alert Channel.
+    - Each Browser Check should include the Email Alert Channel you created in the previous step.
 4. Add your Playwright checks to the `src/__checks__/` folder.
     - You can remove any unwanted checks the template created.
 5. Setup a Github Actions CI pipeline to deploy to Checkly.
@@ -44,7 +44,7 @@ To recreate this project in another repository, you can fork this repository or 
 
 ## CLI Commands
 
-If you would like to test your checks before you push them to a repository, you can run the core CLI commands with `npx checkly <command>` 
+If you would like to test your checks before you push them to the repository, you can run the core CLI commands with `npx checkly <command>` 
 
 | Command              | Action                                           |
 |:---------------------|:-------------------------------------------------|
